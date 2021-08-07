@@ -30,6 +30,10 @@
             xhr.ontimeout = function() {
                 alert("网络异常，请稍候重试")
             }
+            // 网络异常问题（可以通过 chrome 浏览器的 Network 里面的 Offline 来测试）
+            xhr.onerror = function() {
+                alert("你的网络似乎出了一些问题")
+            }
             xhr.open('GET', 'http://127.0.0.1:8000/delay');
             xhr.send();
             xhr.onreadystatechange = function () {
