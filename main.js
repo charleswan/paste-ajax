@@ -8,6 +8,21 @@ app.get('/server', (request, response) => {
     response.send("HELLO AJAX");
 })
 
+app.get('/ie', (request, response) => {
+    // 设置响应
+    response.setHeader('Access-Control-Allow-Origin', '*'); // 设置允许跨域
+    response.send("HELLO IE3");
+})
+
+app.get('/delay', (request, response) => {
+    // 延时响应
+    response.setHeader('Access-Control-Allow-Origin', '*'); // 设置允许跨域
+    setTimeout(() => {
+        response.send('延时响应')
+    }, 3000)
+    // response.send("HELLO timeout");
+})
+
 app.post('/server', (request, response) => {
     // 设置响应
     response.setHeader('Access-Control-Allow-Origin', '*'); // 设置允许跨域
@@ -27,7 +42,7 @@ app.all('/json-server', (request, response) => {
     response.setHeader('Access-Control-Allow-Origin', '*'); // 设置允许跨域
     response.setHeader('Access-Control-Allow-Headers', '*'); // 允许前端自定义头
     const data = {
-        name: "123"
+        name: "1234"
     }
     let str = JSON.stringify(data)
     response.send(str);
