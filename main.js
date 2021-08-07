@@ -14,9 +14,10 @@ app.get('/ie', (request, response) => {
     response.send("HELLO IE3");
 })
 
-app.get('/delay', (request, response) => {
+app.all('/delay', (request, response) => {
     // 延时响应
     response.setHeader('Access-Control-Allow-Origin', '*'); // 设置允许跨域
+    response.setHeader('Access-Control-Allow-Headers', '*');
     setTimeout(() => {
         response.send('延时响应')
     }, 3000)
@@ -26,6 +27,7 @@ app.get('/delay', (request, response) => {
 app.all('/jquery', (request, response) => {
     // 延时响应
     response.setHeader('Access-Control-Allow-Origin', '*'); // 设置允许跨域
+    response.setHeader('Access-Control-Allow-Headers', '*');
     const data = {name:"123"}
     response.send(JSON.stringify(data));
 })
