@@ -57,6 +57,15 @@ app.all('/json-server', (request, response) => {
     response.send(str);
 })
 
+//axios
+app.all('/axios',(request,response)=>{
+    //设置响应头
+    response.setHeader('Access-Control-Allow-Origin','*');
+    response.setHeader('Access-Control-Allow-Headers', '*');
+    const data = {name:'张三'};
+    response.send(JSON.stringify(data));
+});
+
 app.listen(8000, () => {
     console.log("服务已经启动，8000 端口监听中...");
 })
