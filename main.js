@@ -23,6 +23,13 @@ app.get('/delay', (request, response) => {
     // response.send("HELLO timeout");
 })
 
+app.all('/jquery', (request, response) => {
+    // 延时响应
+    response.setHeader('Access-Control-Allow-Origin', '*'); // 设置允许跨域
+    const data = {name:"123"}
+    response.send(JSON.stringify(data));
+})
+
 app.post('/server', (request, response) => {
     // 设置响应
     response.setHeader('Access-Control-Allow-Origin', '*'); // 设置允许跨域
