@@ -18,7 +18,7 @@ app.post('/server', (request, response) => {
 app.all('/server', (request, response) => {
     // 设置响应
     response.setHeader('Access-Control-Allow-Origin','*'); // 设置允许跨域
-    response.setHeader('Access-Control-Allow-Headers','*'); // 允许前端设置头
+    response.setHeader('Access-Control-Allow-Headers','*'); // 允许前端自定义头
     response.send("HELLO AJAX POST");
 })
 
