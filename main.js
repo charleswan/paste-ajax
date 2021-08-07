@@ -75,6 +75,66 @@ app.all('/fetch',(request,response)=>{
     response.send(JSON.stringify(data));
 });
 
+app.get('/home', (request, response)=>{
+    //响应一个页面
+    response.sendFile(__dirname + '/index.html');
+});
+
+app.get('/data', (request, response)=>{
+    //防止出现跨域
+    response.setHeader('Access-Control-Allow-Origin','*');
+    response.send('用户数据');
+});
+
+//jsonp服务
+app.all('/jsonp-server',(request, response) => {
+    // response.send('console.log("hello jsonp")');
+    const data = {
+        name: '尚硅谷atguigu'
+    };
+    //将数据转化为字符串
+    let str = JSON.stringify(data);
+    //返回结果
+    response.end(`handle(${str})`);
+});
+
+//用户名检测是否存在
+app.all('/check',(request, response) => {
+    // response.send('console.log("hello jsonp")');
+    const data = {
+        exist: 1,
+        msg: '用户名已经存在'
+    };
+    //将数据转化为字符串
+    let str = JSON.stringify(data);
+    //返回结果
+    response.end(`handle(${str})`);
+});
+
+app.all('/jquery-jsonp',(request, response) => {
+    // response.send('console.log("hello jsonp")');
+    const data = {
+        name:'尚硅谷',
+        city: ['北京','上海','深圳']
+    };
+    //将数据转化为字符串
+    let str = JSON.stringify(data);
+    //接收 callback 参数
+    let cb = request.query.callback;
+
+    //返回结果
+    response.end(`${cb}(${str})`);
+});
+
+app.all('/cors-server', (request, response)=>{
+    //设置响应头
+    response.setHeader("Access-Control-Allow-Origin", "*");
+    response.setHeader("Access-Control-Allow-Headers", '*');
+    response.setHeader("Access-Control-Allow-Method", '*');
+    // response.setHeader("Access-Control-Allow-Origin", "http://127.0.0.1:5500");
+    response.send('hello CORS');
+});
+
 app.listen(8000, () => {
     console.log("服务已经启动，8000 端口监听中...");
 })
