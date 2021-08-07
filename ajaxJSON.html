@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AJAX JSON 响应</title>
+    <style>
+        #result{
+            width:200px;
+            height:100px;
+            border:solid 1px #90b;
+        }
+    </style>
+</head>
+<body>
+    <div id="result"></div>
+    <script>
+        const result = document.getElementById("result");
+        // 绑定键盘按下事件
+        window.onkeydown = function() {
+            const xhr = new XMLHttpRequest();
+            xhr.open('GET', 'http://127.0.0.1:8000/json-server');
+            xhr.responseType = 'json'
+            xhr.send();
+            xhr.onreadystatechange = function() {
+                // 判断
+                if (xhr.readyState === 4) {
+                    // 服务端返回了所有的结果。
+                    if (xhr.status >= 200 && xhr.status < 300) {
+                        // 处理结果。
+                        
+                        // 方法 1: 手动对数据转化
+                        // let data = JSON.parse(xhr.response)
+                        // result.innerHTML = data.name
+
+                        // 方法 2: 自动转换(xhr.responseType = 'json')
+                        result.innerHTML = xhr.response.name
+                    }
+                }
+            }
+        }
+    </script>
+</body>
+</html>
