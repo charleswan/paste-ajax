@@ -1,12 +1,24 @@
 {
-  "name": "express",
+  "name": "paste-ajax",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/charleswan/paste-ajax.git"
+  },
+  "keywords": [],
   "author": "",
   "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/charleswan/paste-ajax/issues"
+  },
+  "homepage": "https://github.com/charleswan/paste-ajax#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
   "type": "module"
 }
